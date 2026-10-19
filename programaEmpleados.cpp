@@ -9,12 +9,12 @@ int edadEmpleado, tipoEmpleado;
 char generoEmpleado;
 double sueldoEmpleado, horasEmpleadoPlantaDiariaLV=9.5, horasEmpleadoPlantaSabado=6, horasEmpleadoPlantaSemanalLV, horasEmpleadoPlantaSabadoMes, horasEmpleadoPlantaMes, sueldoEmpleadoPlantaHora, sueldoEmpleadoPlantaMinuto, sueldoEmpleadoPlantaSegundo, sueldoEmpleadoPlantaDiarioLV, sueldoEmpleadoPlantaSabado, sueldoEmpleadoPlantaSemanal, sueldoEmpleadoPlantaTotalSemanal, sueldoEmpleadoPlantaQuincenal, reporteEmpleadoPlanta;
 double horasEmpleadoMedioTiempoDiariaLV=5.5, horasEmpleadoMedioTiempoSemanal=33, horasEmpleadoMedioTiempoMes=132, sueldoEmpleadoMedioTiempoHora, sueldoEmpleadoMedioTiempoMinuto, sueldoEmpleadoMedioTiempoSegundo, sueldoEmpleadoMedioTiempoDiarioLV, sueldoEmpleadoMedioTiempoSabado, sueldoEmpleadoMedioTiempoSemanalLV,sueldoEmpleadoMedioTiempoSemanalTotal, sueldoEmpleadoMedioTiempoQuincenal, reporteEmpleadoMedioTiempo;  
-
+double horasEmpleadoContratoSemanal, horasEmpleadoContratoMes, horasEmpleadoContratoHora, horasEmpleadoContratoSemanal, horasEmpleadoContratoQuincenal, reporteEmpleadoContrato, sueldoEmpleadoContratoHora, sueldoEmpleadoContratoMinuto, sueldoEmpleadoContratoSegundo, sueldoEmpleadoContratoDiarioLV, sueldoEmpleadoContratoSabado, sueldoEmpleadoContratoSemanalLV, sueldoEmpleadoContratoSemanalTotal, sueldoEmpleadoContratoQuincenal;
 int main ()
 { 
 
-    cout <<**********BIENVENIDO***********" << endl;
-    cout <<__________Pillofon S.A.__________" << endl;
+    cout <<"**********BIENVENIDO***********" << endl;
+    cout << "********Pillofon S.A.********" << endl;
 
     cout << "Ingrese el nombre del empleado: ";
     getline(cin>>ws, nombreEmpleado);
@@ -62,7 +62,7 @@ int main ()
         sueldoEmpleadoPlantaSabado = sueldoEmpleadoPlantaHora * horasEmpleadoPlantaSabado;
         sueldoEmpleadoPlantaSemanal = sueldoEmpleadoPlantaDiarioLV * 5;
         sueldoEmpleadoPlantaTotalSemanal = sueldoEmpleadoPlantaSemanal + sueldoEmpleadoPlantaSabado;
-        sueldoEmpleadoPlantaQuincenal = sueldoMensual / 2;
+        sueldoEmpleadoPlantaQuincenal = sueldoEmpleado / 2;
 
         //Salida de los resultados//
         cout << "El empleado " << nombreEmpleado << " trabaja " << horasEmpleadoPlantaMes << " horas al mes, y el resultado del estudio de su sueldo es el siguiente: " <<endl;
@@ -79,7 +79,7 @@ int main ()
         break;
     
     case 2: 
-    cout << "Ingrese el sueldo del empleado: ";
+      cout << "Ingrese el sueldo del empleado: ";
         cin >> sueldoEmpleado;
         while (sueldoEmpleado < 16000) { 
             cout << "Sueldo invalido. Ingrese nuevamente el sueldo: ";
@@ -105,11 +105,44 @@ int main ()
         cout << "Sueldo por minuto: $" << sueldoEmpleadoMedioTiempoMinuto << endl;
         cout << "Sueldo por segundo: $" << sueldoEmpleadoMedioTiempoSegundo << endl;
         cout << "Sueldo diario de lunes a viernes: $" << sueldoEmpleadoMedioTiempoDiarioLV << endl;
-        cout << "Sueldo diario del sabado: $" << sueldoEmpleadoMedioTiempo
+        cout << "Sueldo diario del sabado: $" << sueldoEmpleadoMedioTiempoSabado << endl;
         cout << "Sueldo semanal: $" << sueldoEmpleadoMedioTiempoSemanalLV << endl;
-        cout << "Sueldo total semanal: $" << sueldoEmpleadoMedioTiempoSemanal
+        cout << "Sueldo total semanal: $" << sueldoEmpleadoMedioTiempoSemanalTotal << endl; 
         cout << "Sueldo quincenal: $" << sueldoEmpleadoMedioTiempoQuincenal << endl;
 
+        break;
+        
+    Case 3:
+        cout << "Ingrese el sueldo del empleado: ";
+        cin >> sueldoEmpleado;
+        while (sueldoEmpleado < 16000) { 
+            cout << "Sueldo invalido. Ingrese nuevamente el sueldo: ";
+            cin >> sueldoEmpleado;
+        }
+        cout << "ingrese las horas trabajadas por semana";
+        cin >> horasEmpleadoContratoSemanal;
+        while (horasEmpleadoContratoSemanal < 30 || horasEmpleadoContratoSemanal > 40) {
+            cout << "Horas invalidas. Ingrese nuevamente las horas trabajadas por semana: ";
+            cin >> horasEmpleadoContratoSemanal;
+        }
+          
+
+        //calculo de las horas//
+        horasEmpleadoContratoMes = horasEmpleadoContratoSemanal * 4;
+        sueldoEmpleadoContratoHora = sueldoEmpleado / horasEmpleadoContratoMes;
+        sueldoEmpleadoContratoSemanal = sueldoEmpleadoContratoHora * horasEmpleadoContratoSemanal;
+        sueldoEmpleadoContratoQuincenal = sueldoEmpleado / 2;
+
+        //Salida de los resultados//
+        cout << "Empleado por contrato" << endl;
+        cout << "El empleado " << nombreEmpleado << " tiene " << edadEmpleado << " años, es de genero " << generoEmpleado << " y su sueldo es de $" << sueldoEmpleado << endl;
+        cout << "Horas trabajadas por semana: " << horasEmpleadoContratoSemanal << endl;
+        cout << "Horas trabajadas por mes: " << horasEmpleadoContratoMes << endl;
+        cout << "Sueldo por hora: $" << sueldoEmpleadoContratoHora << endl;
+        cout << "Sueldo semanal: $" << sueldoEmpleadoContratoSemanal << endl;
+        cout << "Sueldo quincenal: $" << sueldoEmpleadoContratoQuincenal
+    << endl;
+        
         break;
 
     }
